@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/.idea/.gitignore
+/.idea/aws.xml
+/.idea/modules.xml
+/postcss.config.js
+/.idea/prettier.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/tailwind.config.js
+/.idea/tosa.iml
+/.idea/vcs.xml
+/yarn.lock
