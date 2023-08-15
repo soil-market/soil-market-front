@@ -1,1 +1,1 @@
-export type ProcessKey = "phone-verification";
+export type ProcessKey = "phone-verification" | "sign-up";
