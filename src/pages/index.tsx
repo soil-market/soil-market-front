@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import { Typography } from "@mui/material";
 import Head from "next/head";
 
@@ -37,6 +38,7 @@ export default function Home() {
             </li>
           </ul>
         </div>
+        <Button>시작하기</Button>
       </main>
     </>
   );
