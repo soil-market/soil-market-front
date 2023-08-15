@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Children, PropsWithChildren } from "react";
 import { ProcessKey } from "./type";
 import useProcessIndex from "./useProcessIndex";
@@ -18,7 +18,7 @@ export default function Process({
 
   return (
     <div className={className || ""}>
-      {index !== 0 && <Button onClick={prev}>뒤로 가기</Button>}
+      {index !== 0 && <ArrowBackIcon onClick={prev}>뒤로 가기</ArrowBackIcon>}
 
       {childrenList[index]}
     </div>
