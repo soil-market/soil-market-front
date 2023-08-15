@@ -1,5 +1,6 @@
 import Button from "@/components/design/Button";
-import { TextField, Typography } from "@mui/material";
+import TextField from "@/components/design/TextField";
+import { Typography } from "@mui/material";
 
 export default function PhoneTextField() {
   return (
