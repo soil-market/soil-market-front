@@ -40,7 +40,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <Button>시작하기</Button>
+        <Button href="/phone-verification">시작하기</Button>
       </main>
     </>
   );
