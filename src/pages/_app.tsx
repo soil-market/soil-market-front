@@ -1,4 +1,4 @@
-import Layout from "@/components/design/Layout";
+import Layout from "@/components/layout/Layout";
 import useIosVh from "@/hooks/useIosVh";
 import "@/styles/globals.css";
 import { QueryClient } from "@tanstack/query-core";

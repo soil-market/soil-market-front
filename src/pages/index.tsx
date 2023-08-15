@@ -1,4 +1,5 @@
 import Button from "@/components/design/Button";
+import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
 import Head from "next/head";
 
@@ -11,8 +12,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="p-20 h-full flex flex-col gap-12 justify-between">
-        <div>
+      <PageLayout className="justify-between h-full">
+        <div className="flex flex-col gap-12">
           <Typography variant="h5">토사장터</Typography>
           <Typography variant="body1">환영합니다!</Typography>
           <Typography variant="body1" style={{ wordBreak: "keep-all" }}>
@@ -41,7 +42,7 @@ export default function Home() {
           </div>
         </div>
         <Button href="/phone-verification">시작하기</Button>
-      </main>
+      </PageLayout>
     </>
   );
 }

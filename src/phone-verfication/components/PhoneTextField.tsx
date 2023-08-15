@@ -1,10 +1,11 @@
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
+import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
 
 export default function PhoneTextField() {
   return (
-    <div className="p-20 flex flex-col justify-between h-full">
+    <PageLayout className="justify-between h-full">
       <div>
         <Typography variant="h6">토사장터에 오신걸 환영합니다!</Typography>
         <Typography variant="h6">시작에 앞서 휴대폰 인증이 필요해요</Typography>
@@ -16,6 +17,6 @@ export default function PhoneTextField() {
       </div>
 
       <Button>인증 번호 받기</Button>
-    </div>
+    </PageLayout>
   );
 }

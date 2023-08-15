@@ -1,10 +1,11 @@
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
+import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
 
 export default function PhenVerification() {
   return (
-    <div className="h-full flex flex-col justify-around p-20">
+    <PageLayout className="justify-around h-full">
       <div>
         <Typography variant="h6">문자로 받은</Typography>
         <Typography variant="h6">인증 번호 6자리를 알려주세요.</Typography>
@@ -22,6 +23,6 @@ export default function PhenVerification() {
         </div>
       </div>
       <Button>다음으로</Button>
-    </div>
+    </PageLayout>
   );
 }
