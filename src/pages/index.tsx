@@ -10,7 +10,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="p-20 h-full flex flex-col gap-12">
         <Typography variant="h5">토사장터</Typography>
         <Typography variant="body1">환영합니다!</Typography>
         <Typography variant="body1" style={{ wordBreak: "keep-all" }}>
@@ -21,7 +21,7 @@ export default function Home() {
           우리 주변에 토사가 필요한 곳과 내보내는 곳들의 정보를 지도를 통해 한
           눈에 알아보고 다른 사용자들과 토사를 나누고 거래해보세요!
         </Typography>
-        <div className="flex w-full">
+        <div className="flex w-full pt-20">
           <Typography className="w-1/2 text-center" variant="body1">
             주요기능
           </Typography>
