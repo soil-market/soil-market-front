@@ -41,7 +41,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <Button href="/phone-verification">시작하기</Button>
+        <Button href="/install">설치하기</Button>
       </PageLayout>
     </>
   );
