@@ -13,8 +13,6 @@ module.exports = {
       width: px0_1000,
       heigh: px0_1000,
       gap: px0_100,
-      top: px0_100,
-      left: px0_100,
     },
   },
   plugins: [],
