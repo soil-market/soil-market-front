@@ -1,8 +1,8 @@
 import TextField from "@/components/design/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputAdornment } from "@mui/material";
+import { InputAdornment, TextFieldProps } from "@mui/material";
 
-export default function FindTextField() {
+export default function FindTextField(props: TextFieldProps) {
   return (
     <>
       <TextField
@@ -14,7 +14,7 @@ export default function FindTextField() {
             </InputAdornment>
           ),
         }}
-        variant="standard"
+        {...props}
       />
     </>
   );
