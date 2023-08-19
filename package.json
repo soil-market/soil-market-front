@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
+    "@types/navermaps": "^3.6.5",
     "autoprefixer": "^10.4.14",
     "jest": "^29.6.2",
     "msw": "^1.2.3",
