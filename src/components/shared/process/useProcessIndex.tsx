@@ -5,7 +5,7 @@ const key = new Date().getMilliseconds();
 
 const initialMap = new Map<ProcessKey, { current: number; last: number }>();
 initialMap.set("phone-verification", { current: 0, last: 1 });
-initialMap.set("sign-up", { current: 1, last: 1 });
+initialMap.set("sign-up", { current: 0, last: 1 });
 
 const processAtom = atom({
   key: `process ${key}`,
