@@ -1,4 +1,5 @@
 import Button from "@/components/design/Button";
+import Export from "@/modules/my-market/export/Export";
 import Import from "@/modules/my-market/import/Import";
 import { Typography } from "@mui/material";
 
@@ -22,8 +23,10 @@ export default function MyMarket() {
           <Typography variant="h6">나의 토사현장</Typography>
         </div>
 
-        <Typography variant="subtitle1">토사 나오는 현장</Typography>
-        <Import />
+        <div className="flex flex-col gap-60">
+          <Export />
+          <Import />
+        </div>
       </div>
     </div>
   );
