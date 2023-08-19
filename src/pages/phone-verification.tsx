@@ -1,6 +1,6 @@
 import Process from "@/components/shared/process/Process";
-import PhenVerification from "@/phone-verfication/components/PhenVerification";
-import PhoneTextField from "@/phone-verfication/components/PhoneTextField";
+import PhenVerification from "@/modules/phone-verfication/components/PhenVerification";
+import PhoneTextField from "@/modules/phone-verfication/components/PhoneTextField";
 
 export default function PhoneVerficationPage() {
   return (

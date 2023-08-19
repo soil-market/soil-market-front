@@ -1,4 +1,4 @@
-import FindTextField from "@/find/components/FindTextField";
+import FindTextField from "@/modules/find/components/FindTextField";
 import FilterList from "./FilterList";
 import HomeLocation from "./HomeLocation";
 

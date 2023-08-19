@@ -1,6 +1,6 @@
 import Button from "@/components/design/Button";
 import PageLayout from "@/components/layout/PageLayout";
-import FindTextField from "@/find/components/FindTextField";
+import FindTextField from "@/modules/find/components/FindTextField";
 import Typography from "@mui/material/Typography";
 
 export default function FindPage() {
