@@ -3,7 +3,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
 import Head from "next/head";
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <>
       <Head>
