@@ -8,6 +8,7 @@ export default function FilterList() {
     <div className="w-full flex gap-12">
       {filterList.map((filter) => (
         <Button
+          size="small"
           key={filter}
           className="flex-none"
           style={{ padding: "5px 10px", width: "fit-content", minWidth: 0 }}
