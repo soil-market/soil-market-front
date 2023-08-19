@@ -17,8 +17,10 @@ export default function MyMarket() {
           <Button style={{ padding: "0 5px" }}>프로필보기</Button>
         </div>
       </div>
-      <div className="px-20 flex flex-col gap-12">
-        <Typography variant="h6">나의 토사현장</Typography>
+      <div className="flex flex-col gap-12">
+        <div className="px-20">
+          <Typography variant="h6">나의 토사현장</Typography>
+        </div>
 
         <Typography variant="subtitle1">토사 나오는 현장</Typography>
         <Import />

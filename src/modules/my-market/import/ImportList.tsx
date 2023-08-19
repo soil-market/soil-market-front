@@ -8,7 +8,7 @@ export default function ImportList() {
   };
 
   return (
-    <ol className="flex flex-col gap-12">
+    <ol>
       <ImportListItem {...item} />
       <ImportListItem {...item} />
     </ol>
