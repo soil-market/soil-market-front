@@ -14,7 +14,7 @@ export default function HomeLocation() {
       <Typography variant="h6">현장설정</Typography>
       <PlayArrowIcon
         className="transition-all w-content h-content mt-3"
-        style={{ transform: click ? "rotate(90deg)" : "rotate(270deg)" }}
+        style={{ transform: click ? "rotate(-90deg)" : "rotate(90deg)" }}
       />
     </div>
   );
