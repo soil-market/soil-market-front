@@ -4,7 +4,7 @@ import HomeLocation from "./HomeLocation";
 
 export default function HomeHeader() {
   return (
-    <div className="absolute top-0 w-full flex flex-col gap-12 p-20">
+    <div className="absolute top-0 w-full flex flex-col gap-12 p-20 border-solid border-b-1 border-gray-300">
       <HomeLocation />
       <FindTextField />
       <FilterList />
