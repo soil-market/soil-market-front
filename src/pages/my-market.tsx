@@ -2,6 +2,7 @@ import Button from "@/components/design/Button";
 import Export from "@/modules/my-market/export/Export";
 import Import from "@/modules/my-market/import/Import";
 import { Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function MyMarket() {
   const name = "사용자 123";
@@ -27,6 +28,12 @@ export default function MyMarket() {
           <Export />
           <Import />
         </div>
+      </div>
+
+      <div className="absolute bottom-[77px] right-[8px]">
+        <Button>
+          <Link href={"/feedback"}>앱에 의견남기기</Link>
+        </Button>
       </div>
     </div>
   );
