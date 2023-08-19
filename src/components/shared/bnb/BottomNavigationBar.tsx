@@ -31,7 +31,7 @@ export default function BottomNavigationBar() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full border-t-1 border-solid border-[#9E9E9E] py-5">
+    <div className="fixed bottom-0 left-0 w-full border-t-1 border-solid border-gray py-5">
       <BottomNavigation showLabels value={value} onChange={handleChange}>
         {list.map((item, index) => {
           let icon;

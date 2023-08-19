@@ -13,6 +13,10 @@ module.exports = {
       width: px0_1000,
       height: px0_1000,
       gap: px0_100,
+      borderRadius: px0_100,
+      colors: {
+        gray: "#9E9E9E",
+      },
     },
   },
   plugins: [],
