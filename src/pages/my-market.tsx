@@ -9,7 +9,7 @@ export default function MyMarket() {
 
   return (
     <div className="pt-20">
-      <div className="flex justify-between items-center px-20 mb-20">
+      <div className="flex justify-between items-center px-20 mb-30">
         <div>
           <Typography variant="h6" className="">
             {name}
