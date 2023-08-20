@@ -11,6 +11,7 @@ module.exports = {
       margin: px0_100,
       borderWidth: px0_10,
       width: px0_1000,
+      maxWidth: px0_1000,
       height: px0_1000,
       gap: px0_100,
       borderRadius: px0_100,
