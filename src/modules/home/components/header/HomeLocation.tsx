@@ -11,7 +11,7 @@ export default function HomeLocation() {
 
   return (
     <div className="flex" onClick={onClick}>
-      <Typography variant="h6">현장설정</Typography>
+      <Typography variant="h6">위치설정</Typography>
       <PlayArrowIcon
         className="transition-all w-content h-content mt-3"
         style={{ transform: click ? "rotate(-90deg)" : "rotate(90deg)" }}
