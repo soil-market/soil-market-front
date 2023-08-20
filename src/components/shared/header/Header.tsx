@@ -4,12 +4,18 @@ import { useRouter } from "next/router";
 
 type HeaderProps = {
   text: string;
+  // pathname
+  beforePage?: string;
 };
-export default function Header({ text }: HeaderProps) {
-  const { back } = useRouter();
+export default function Header({ text, beforePage }: HeaderProps) {
+  const { push, back } = useRouter();
 
   const goBack = () => {
-    back();
+    if (beforePage) {
+      push(beforePage);
+    } else {
+      back();
+    }
   };
 
   return (
