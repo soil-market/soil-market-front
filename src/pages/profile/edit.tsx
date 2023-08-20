@@ -33,6 +33,9 @@ export default function ProfileEditPage() {
               label={item.label}
               defaultValue={item.value}
               variant="filled"
+              inputProps={{
+                readOnly: item.label === "전화번호",
+              }}
             />
           ))}
         </div>
