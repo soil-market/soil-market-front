@@ -16,7 +16,9 @@ export default function MyMarket() {
           </Typography>
         </div>
         <div>
-          <Button style={{ padding: "0 5px" }}>프로필보기</Button>
+          <Button style={{ padding: "0 5px" }}>
+            <Link href={"/profile"}>프로필보기</Link>
+          </Button>
         </div>
       </div>
       <div className="flex flex-col gap-12">
