@@ -23,7 +23,7 @@ export default function ProfileEditPage() {
   return (
     <>
       <div className="flex flex-col">
-        <Header text="프로필" />
+        <Header text="프로필 수정" />
       </div>
       <div className="h-full flex flex-col justify-between pt-80 pb-87 px-20 gap-60">
         <div className="flex flex-col gap-60  w-full">
