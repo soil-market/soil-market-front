@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --vh: 100%;
-}
-
-body {
-  height: 100vh;
-  height: calc(var(--vh) * 100);
-}
-
 #__next {
   height: 100%;
 }
@@ -19,4 +10,13 @@ h5,
 h6,
 p {
   word-break: keep-all;
+}
+
+:root {
+  --vh: 100%;
+}
+
+body {
+  height: 100vh;
+  height: calc(var(--vh) * 100);
 }
