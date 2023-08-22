@@ -43,3 +43,9 @@ next-env.d.ts
 /.idea/tosa.iml
 /.idea/vcs.xml
 /yarn.lock
+
+# next-pwa
+public/sw.js
+public/workbox-*.js
+
+
