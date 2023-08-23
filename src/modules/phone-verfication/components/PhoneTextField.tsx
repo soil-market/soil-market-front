@@ -1,9 +1,31 @@
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
+import useProcessIndex from "@/components/shared/process/useProcessIndex";
 import { Typography } from "@mui/material";
+import { ChangeEvent, useRef, useState } from "react";
 
 export default function PhoneTextField() {
+  const [text, setText] = useState("");
+
+  const ref = useRef<HTMLInputElement>(null);
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  let verifyPhoneNumber: (phoneNumber: string, onSuccess: () => void) => void;
+
+  import("@/api/firebase").then((module) => {
+    verifyPhoneNumber = module.verifyPhoneNumber;
+  });
+
+  const { next } = useProcessIndex("phone-verification");
+
+  const onClick = () => {
+    verifyPhoneNumber(text, next);
+  };
+
   return (
     <PageLayout className="justify-between h-full">
       <div>
@@ -13,10 +35,11 @@ export default function PhoneTextField() {
       </div>
       <div className="flex flex-col gap-12">
         <Typography variant="subtitle2">입력한 정보를 확인해주세요</Typography>
-        <TextField type="number" label={"휴대폰 번호"} />
+        <TextField value={text} onChange={onChange} label={"휴대폰 번호"} />
       </div>
+      <div id={"recaptcha-container"}></div>
 
-      <Button>인증 번호 받기</Button>
+      <Button onClick={onClick}>인증 번호 받기</Button>
     </PageLayout>
   );
 }
