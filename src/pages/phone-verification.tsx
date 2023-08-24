@@ -7,9 +7,12 @@ export default function PhoneVerficationPage() {
   const { isMounted } = useIsMounted();
 
   return (
-    <Process className="h-full" processName="phone-verification">
-      {isMounted && <PhoneTextField />}
-      {isMounted && <PhenVerification />}
-    </Process>
+    <>
+      <Process className="h-full" processName="phone-verification">
+        {isMounted && <PhoneTextField />}
+        {isMounted && <PhenVerification />}
+      </Process>
+      <div id={"recaptcha-container"}></div>
+    </>
   );
 }

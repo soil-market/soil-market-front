@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <Layout>
           <Component {...pageProps} />
+          <div id={"recaptcha-container"}></div>
         </Layout>
       </RecoilRoot>
     </QueryClientProvider>

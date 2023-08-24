@@ -3,15 +3,15 @@ import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
-import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
+import usePhoneVerificationRecoil from "../usePhoneVerfication.recoil";
 
 export default function PhenVerification() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);
 
-  const { query } = useRouter();
+  const { phoneVerification } = usePhoneVerificationRecoil();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -50,8 +50,10 @@ export default function PhenVerification() {
 
   const onClick = () => {
     verifyPhoneNumber(
-      query.phone as string,
-      () => {},
+      phoneVerification.phone,
+      () => {
+        alert("인증번호가 재발송되었어요.");
+      },
       (error) => {
         setError(error);
       }

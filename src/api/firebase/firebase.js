@@ -25,12 +25,14 @@ const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
 auth.languageCode = "ko";
+
 window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
   size: "invisible",
 });
 window.recaptchaVerifier.render().then((widgetId) => {
   window.recaptchaWidgetId = widgetId;
 });
+
 const appVerifier = window.recaptchaVerifier;
 
 function formatKoreanPhoneNumber(numberString) {

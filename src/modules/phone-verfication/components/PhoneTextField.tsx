@@ -5,11 +5,14 @@ import PageLayout from "@/components/layout/PageLayout";
 import useProcessIndex from "@/components/shared/process/useProcessIndex";
 import { Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
+import usePhoneVerificationRecoil from "../usePhoneVerfication.recoil";
 
 export default function PhoneTextField() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);
+
+  const { setPhoneVerification } = usePhoneVerificationRecoil();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -28,9 +31,19 @@ export default function PhoneTextField() {
   const { next } = useProcessIndex("phone-verification");
 
   const onClick = () => {
-    verifyPhoneNumber(text, next, (error) => {
-      setError(error);
-    });
+    verifyPhoneNumber(
+      text,
+      () => {
+        setPhoneVerification((prev) => ({
+          ...prev,
+          phone: text,
+        }));
+        next();
+      },
+      (error) => {
+        setError(error);
+      }
+    );
   };
 
   return (
@@ -50,7 +63,6 @@ export default function PhoneTextField() {
           label={"휴대폰 번호"}
         />
       </div>
-      <div id={"recaptcha-container"}></div>
 
       <Button onClick={onClick}>인증 번호 받기</Button>
     </PageLayout>
