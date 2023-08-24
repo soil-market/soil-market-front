@@ -3,12 +3,10 @@ import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
 import useProcessIndex from "@/components/shared/process/useProcessIndex";
 import { Typography } from "@mui/material";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function PhoneTextField() {
   const [text, setText] = useState("");
-
-  const ref = useRef<HTMLInputElement>(null);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
