@@ -1,3 +1,4 @@
+import { ErrorResponse } from "@/api/firebase/type";
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
@@ -8,6 +9,8 @@ import { ChangeEvent, useState } from "react";
 export default function PhoneTextField() {
   const [text, setText] = useState("");
 
+  const [error, setError] = useState<ErrorResponse | null>(null);
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
@@ -15,17 +18,19 @@ export default function PhoneTextField() {
   let verifyPhoneNumber: (
     phoneNumber: string,
     onSuccess: () => void,
-    onError: () => void
+    onError: (error: any) => void
   ) => void;
 
-  import("@/api/firebase").then((module) => {
+  import("@/api/firebase/firebase").then((module) => {
     verifyPhoneNumber = module.verifyPhoneNumber;
   });
 
   const { next } = useProcessIndex("phone-verification");
 
   const onClick = () => {
-    verifyPhoneNumber(text, next, () => {});
+    verifyPhoneNumber(text, next, (error) => {
+      setError(error);
+    });
   };
 
   return (
@@ -37,7 +42,13 @@ export default function PhoneTextField() {
       </div>
       <div className="flex flex-col gap-12">
         <Typography variant="subtitle2">입력한 정보를 확인해주세요</Typography>
-        <TextField value={text} onChange={onChange} label={"휴대폰 번호"} />
+        <TextField
+          error={!!error}
+          helperText={error?.message}
+          value={text}
+          onChange={onChange}
+          label={"휴대폰 번호"}
+        />
       </div>
       <div id={"recaptcha-container"}></div>
 

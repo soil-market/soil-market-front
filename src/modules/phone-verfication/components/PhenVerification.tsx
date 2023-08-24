@@ -1,3 +1,4 @@
+import { ErrorResponse } from "@/api/firebase/type";
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
@@ -8,20 +9,26 @@ import { ChangeEvent, useEffect, useState } from "react";
 export default function PhenVerification() {
   const [text, setText] = useState("");
 
+  const [error, setError] = useState<ErrorResponse | null>(null);
+
   const { query } = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
-  const confirm = import("@/api/firebase").then(
+  const confirm = import("@/api/firebase/firebase").then(
     (module) => module.confirmPhoneNumber
   );
 
   useEffect(() => {
     if (text.length === 6) {
       const confirmPhoneNumber = async () => {
-        const res = (await confirm)(text);
+        const res = (await confirm)(
+          text,
+          () => {},
+          () => {}
+        );
       };
 
       confirmPhoneNumber();
@@ -31,10 +38,10 @@ export default function PhenVerification() {
   let verifyPhoneNumber: (
     phoneNumber: string,
     onSuccess: () => void,
-    onError: () => void
+    onError: (error: any) => void
   ) => void;
 
-  import("@/api/firebase").then((module) => {
+  import("@/api/firebase/firebase").then((module) => {
     verifyPhoneNumber = module.verifyPhoneNumber;
   });
 
@@ -42,7 +49,9 @@ export default function PhenVerification() {
     verifyPhoneNumber(
       query.phone as string,
       () => {},
-      () => {}
+      (error) => {
+        setError(error);
+      }
     );
   };
 
@@ -55,6 +64,8 @@ export default function PhenVerification() {
       <div className="flex flex-col gap-12">
         <div className="w-full flex gap-12 items-center">
           <TextField
+            error={!!error}
+            helperText={error?.message}
             value={text}
             onChange={onChange}
             style={{ width: "100%" }}
