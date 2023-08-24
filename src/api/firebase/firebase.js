@@ -74,7 +74,7 @@ export const verifyPhoneNumber = (phoneNumber, onSuccess, onError) => {
  * browser only
  * @param {string} code
  * @param {() => void} onSuccess
- * @param {() => void} onError
+ * @param {(error:any) => void} onError
  */
 export const confirmPhoneNumber = (code, onSuccess, onError) => {
   confirmationResult

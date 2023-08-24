@@ -27,7 +27,10 @@ export default function PhenVerification() {
         const res = (await confirm)(
           text,
           () => {},
-          () => {}
+          (error) => {
+            setError(error);
+            setText("");
+          }
         );
       };
 
