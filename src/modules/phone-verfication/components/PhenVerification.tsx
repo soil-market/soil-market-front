@@ -78,7 +78,7 @@ export default function PhenVerification() {
             onChange={onChange}
             style={{ width: "100%" }}
           />
-          <Countdown time={10} onEnd={() => setCountdown(true)} />
+          <Countdown time={180} onEnd={() => setCountdown(true)} />
         </div>
 
         <div>
