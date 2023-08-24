@@ -1,4 +1,5 @@
 import { ErrorResponse } from "@/api/firebase/type";
+import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
@@ -10,6 +11,8 @@ export default function PhenVerification() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);
+
+  const [countDown, setCountdown] = useState(false);
 
   const { phoneVerification } = usePhoneVerificationRecoil();
 
@@ -75,7 +78,7 @@ export default function PhenVerification() {
             onChange={onChange}
             style={{ width: "100%" }}
           />
-          <div>3:00</div>
+          <Countdown time={10} onEnd={() => setCountdown(true)} />
         </div>
 
         <div>
@@ -84,7 +87,9 @@ export default function PhenVerification() {
           </Button>
         </div>
       </div>
-      <Button>다음으로</Button>
+      <Button onClick={() => console.log(Countdown)} disabled={countDown}>
+        다음으로
+      </Button>
     </PageLayout>
   );
 }
