@@ -1,8 +1,7 @@
-import { uniqueId } from "lodash";
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 
 const phoneVerificationAtom = atom({
-  key: `phoneVerification${uniqueId()}`,
+  key: `phoneVerification${generateUniqueID()}`,
   default: {
     phone: "",
   },
