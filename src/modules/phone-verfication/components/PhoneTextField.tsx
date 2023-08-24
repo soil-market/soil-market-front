@@ -1,9 +1,51 @@
+import { ErrorResponse } from "@/api/firebase/type";
 import Button from "@/components/design/Button";
 import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
+import useProcessIndex from "@/components/shared/process/useProcessIndex";
 import { Typography } from "@mui/material";
+import { ChangeEvent, useState } from "react";
+import usePhoneVerificationRecoil from "../usePhoneVerfication.recoil";
 
 export default function PhoneTextField() {
+  const [text, setText] = useState("");
+
+  const [error, setError] = useState<ErrorResponse | null>(null);
+
+  const { setPhoneVerification } = usePhoneVerificationRecoil();
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  let verifyPhoneNumber: (
+    phoneNumber: string,
+    onSuccess: (confirmationResult: any) => void,
+    onError: (error: any) => void
+  ) => void;
+
+  import("@/api/firebase/firebase").then((module) => {
+    verifyPhoneNumber = module.verifyPhoneNumber;
+  });
+
+  const { next } = useProcessIndex("phone-verification");
+
+  const onClick = () => {
+    verifyPhoneNumber(
+      text,
+      () => {
+        setPhoneVerification((prev) => ({
+          ...prev,
+          phone: text,
+        }));
+        next();
+      },
+      (error) => {
+        setError(error);
+      }
+    );
+  };
+
   return (
     <PageLayout className="justify-between h-full">
       <div>
@@ -13,10 +55,16 @@ export default function PhoneTextField() {
       </div>
       <div className="flex flex-col gap-12">
         <Typography variant="subtitle2">입력한 정보를 확인해주세요</Typography>
-        <TextField type="number" label={"휴대폰 번호"} />
+        <TextField
+          error={!!error}
+          helperText={error?.message}
+          value={text}
+          onChange={onChange}
+          label={"휴대폰 번호"}
+        />
       </div>
 
-      <Button>인증 번호 받기</Button>
+      <Button onClick={onClick}>인증 번호 받기</Button>
     </PageLayout>
   );
 }
