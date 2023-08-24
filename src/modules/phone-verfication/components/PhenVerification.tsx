@@ -28,14 +28,22 @@ export default function PhenVerification() {
     }
   }, [confirm, text]);
 
-  let verifyPhoneNumber: (phoneNumber: string, onSuccess: () => void) => void;
+  let verifyPhoneNumber: (
+    phoneNumber: string,
+    onSuccess: () => void,
+    onError: () => void
+  ) => void;
 
   import("@/api/firebase").then((module) => {
     verifyPhoneNumber = module.verifyPhoneNumber;
   });
 
   const onClick = () => {
-    verifyPhoneNumber(query.phone as string, () => {});
+    verifyPhoneNumber(
+      query.phone as string,
+      () => {},
+      () => {}
+    );
   };
 
   return (

@@ -53,8 +53,9 @@ function formatKoreanPhoneNumber(numberString) {
  * browser only
  * @param {string} phoneNumber
  * @param {() => void} onSuccess
+ * @param {() => void} onError
  */
-export const verifyPhoneNumber = (phoneNumber, onSuccess) => {
+export const verifyPhoneNumber = (phoneNumber, onSuccess, onError) => {
   const convertedPhoneNumber = formatKoreanPhoneNumber(phoneNumber);
   signInWithPhoneNumber(auth, convertedPhoneNumber, appVerifier)
     .then((confirmationResult) => {
@@ -64,15 +65,16 @@ export const verifyPhoneNumber = (phoneNumber, onSuccess) => {
       onSuccess();
     })
     .catch((error) => {
-      // Error; SMS not sent
-      console.log(error);
       grecaptcha.reset(window.recaptchaWidgetId);
+      return error;
     });
 };
 
 /**
  * browser only
  * @param {string} code
+ * @param {() => void} onSuccess
+ * @param {() => void} onError
  */
 export const confirmPhoneNumber = (code) => {
   confirmationResult
@@ -85,5 +87,6 @@ export const confirmPhoneNumber = (code) => {
     .catch((error) => {
       // User couldn't sign in (bad verification code?)
       // ...
+      return error;
     });
 };

@@ -14,7 +14,11 @@ export default function PhoneTextField() {
     setText(e.target.value);
   };
 
-  let verifyPhoneNumber: (phoneNumber: string, onSuccess: () => void) => void;
+  let verifyPhoneNumber: (
+    phoneNumber: string,
+    onSuccess: () => void,
+    onError: () => void
+  ) => void;
 
   import("@/api/firebase").then((module) => {
     verifyPhoneNumber = module.verifyPhoneNumber;
@@ -23,7 +27,7 @@ export default function PhoneTextField() {
   const { next } = useProcessIndex("phone-verification");
 
   const onClick = () => {
-    verifyPhoneNumber(text, next);
+    verifyPhoneNumber(text, next, () => {});
   };
 
   return (
