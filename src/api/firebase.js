@@ -10,7 +10,7 @@ import {
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PIBLIC_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
   authDomain: "soilmarket.firebaseapp.com",
   projectId: "soilmarket",
   storageBucket: "soilmarket.appspot.com",
