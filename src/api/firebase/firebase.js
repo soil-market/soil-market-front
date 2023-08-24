@@ -54,7 +54,7 @@ function formatKoreanPhoneNumber(numberString) {
 /**
  * browser only
  * @param {string} phoneNumber
- * @param {() => void} onSuccess
+ * @param {(confirmationResult:무ㅛ) => void} onSuccess
  * @param {(error:any) => void} onError
  */
 export const verifyPhoneNumber = (phoneNumber, onSuccess, onError) => {
@@ -75,7 +75,7 @@ export const verifyPhoneNumber = (phoneNumber, onSuccess, onError) => {
 /**
  * browser only
  * @param {string} code
- * @param {() => void} onSuccess
+ * @param {(result:any) => void} onSuccess
  * @param {(error:any) => void} onError
  */
 export const confirmPhoneNumber = (code, onSuccess, onError) => {

@@ -1,7 +1,7 @@
 import Process from "@/components/shared/process/Process";
 import useIsMounted from "@/hooks/useIsMounted";
-import PhenVerification from "@/modules/phone-verfication/components/PhenVerification";
 import PhoneTextField from "@/modules/phone-verfication/components/PhoneTextField";
+import PhenVerification from "@/modules/phone-verfication/components/phoneVerification/PhenVerification";
 
 export default function PhoneVerficationPage() {
   const { isMounted } = useIsMounted();

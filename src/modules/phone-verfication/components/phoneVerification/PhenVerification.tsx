@@ -1,45 +1,47 @@
 import { ErrorResponse } from "@/api/firebase/type";
+import { frontApi } from "@/api/front/frontApi";
 import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
-import TextField from "@/components/design/TextField";
 import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
-import usePhoneVerificationRecoil from "../usePhoneVerfication.recoil";
+import { useRouter } from "next/router";
+import { ChangeEvent, useCallback, useState } from "react";
+import usePhoneVerificationRecoil from "../../usePhoneVerfication.recoil";
+import PhoneVerificationTextField from "./PhoneVerificationTextField";
 
 export default function PhenVerification() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);
 
-  const [countDown, setCountdown] = useState(false);
+  const [idToken, setIdToken] = useState("");
 
   const { phoneVerification } = usePhoneVerificationRecoil();
+
+  const { push } = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
-  const confirm = import("@/api/firebase/firebase").then(
-    (module) => module.confirmPhoneNumber
-  );
+  const signUp = async (idToken: string) => {
+    const formData = new FormData();
+    formData.append("IDToken", idToken);
 
-  useEffect(() => {
-    if (text.length === 6) {
-      const confirmPhoneNumber = async () => {
-        const res = (await confirm)(
-          text,
-          () => {},
-          (error) => {
-            setError(error);
-            setText("");
-          }
-        );
-      };
-
-      confirmPhoneNumber();
+    try {
+      const res = await frontApi<{ AccessToken: string }>({
+        url: "/GetAccessToken",
+        method: "POST",
+        params: formData,
+      });
+      if (res) {
+        localStorage.setItem("access_token", res.AccessToken);
+        push("sign-up");
+      }
+    } catch (e) {
+      console.log(e);
     }
-  }, [confirm, text]);
+  };
 
   let verifyPhoneNumber: (
     phoneNumber: string,
@@ -63,6 +65,20 @@ export default function PhenVerification() {
     );
   };
 
+  const onSuccess = useCallback(
+    async (result: { _tokenResponse: { idToken: any } }) => {
+      const idToken = result._tokenResponse.idToken;
+      setIdToken(idToken);
+      // alert("인증되었어요!");
+    },
+    []
+  );
+
+  const onError = (error: ErrorResponse | null) => {
+    setError(error);
+    setText("");
+  };
+
   return (
     <PageLayout className="justify-around h-full">
       <div>
@@ -71,14 +87,14 @@ export default function PhenVerification() {
       </div>
       <div className="flex flex-col gap-12">
         <div className="w-full flex gap-12 items-center">
-          <TextField
-            error={!!error}
-            helperText={error?.message}
-            value={text}
+          <PhoneVerificationTextField
             onChange={onChange}
-            style={{ width: "100%" }}
+            text={text}
+            error={error}
+            onError={onError}
+            onSuccess={onSuccess}
           />
-          <Countdown time={180} onEnd={() => setCountdown(true)} />
+          <Countdown time={180} />
         </div>
 
         <div>
@@ -87,7 +103,7 @@ export default function PhenVerification() {
           </Button>
         </div>
       </div>
-      <Button onClick={() => console.log(Countdown)} disabled={countDown}>
+      <Button onClick={() => signUp(idToken)} disabled={!idToken}>
         다음으로
       </Button>
     </PageLayout>

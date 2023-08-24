@@ -3,7 +3,7 @@ import useInterval from "../hooks/useInterval";
 
 interface CountdownProps {
   time: number; // Initial time in seconds
-  onEnd: () => void;
+  onEnd?: () => void;
 }
 
 const Countdown: React.FC<CountdownProps> = ({ time, onEnd }) => {
@@ -27,7 +27,7 @@ const Countdown: React.FC<CountdownProps> = ({ time, onEnd }) => {
 
   useEffect(() => {
     if (remainingTime === 0) {
-      onEnd();
+      onEnd && onEnd();
     }
   }, [onEnd, remainingTime]);
 

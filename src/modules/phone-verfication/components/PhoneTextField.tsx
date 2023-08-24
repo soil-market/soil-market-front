@@ -20,7 +20,7 @@ export default function PhoneTextField() {
 
   let verifyPhoneNumber: (
     phoneNumber: string,
-    onSuccess: () => void,
+    onSuccess: (confirmationResult: any) => void,
     onError: (error: any) => void
   ) => void;
 
