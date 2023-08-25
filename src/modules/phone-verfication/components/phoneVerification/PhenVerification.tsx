@@ -1,5 +1,5 @@
 import { ErrorResponse } from "@/api/firebase/type";
-import { frontApi } from "@/api/front/frontApi";
+import { frontApi } from "@/api/front/config/frontApi";
 import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
 import PageLayout from "@/components/layout/PageLayout";
