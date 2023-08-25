@@ -8,18 +8,13 @@ interface CountdownProps {
 
 const Countdown: React.FC<CountdownProps> = ({ time, onEnd }) => {
   const [remainingTime, setRemainingTime] = useState<number>(time);
-  const [isRunning, setIsRunning] = useState<boolean>(true);
 
-  useInterval(
-    () => {
-      if (remainingTime > 0) {
-        setRemainingTime((prevTime) => prevTime - 1);
-      } else {
-        setIsRunning(false);
-      }
-    },
-    isRunning ? 1000 : null
-  );
+  const id = useInterval(() => {
+    if (remainingTime > 0) {
+      setRemainingTime((prevTime) => prevTime - 1);
+      console.log(remainingTime);
+    }
+  }, 1000);
 
   useEffect(() => {
     setRemainingTime(time);
@@ -27,9 +22,10 @@ const Countdown: React.FC<CountdownProps> = ({ time, onEnd }) => {
 
   useEffect(() => {
     if (remainingTime === 0) {
+      clearInterval(id as number);
       onEnd && onEnd();
     }
-  }, [onEnd, remainingTime]);
+  }, [id, onEnd, remainingTime]);
 
   const formatTime = (timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
