@@ -1,5 +1,6 @@
 import { ErrorResponse } from "@/api/firebase/type";
 import { frontApi } from "@/api/front/config/frontApi";
+import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
 import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
@@ -67,7 +68,7 @@ export default function PhenVerification() {
     async (result: { _tokenResponse: { idToken: any } }) => {
       const idToken = result._tokenResponse.idToken;
       setIdToken(idToken);
-      // alert("인증되었어요!");
+      alert("인증되었어요!");
     },
     []
   );
@@ -92,7 +93,7 @@ export default function PhenVerification() {
             onError={onError}
             onSuccess={onSuccess}
           />
-          {/* <Countdown time={180} /> */}
+          <Countdown time={180} />
         </div>
 
         <div>
