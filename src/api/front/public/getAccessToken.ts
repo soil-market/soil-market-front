@@ -1,8 +1,9 @@
+import { apiRoute } from "../config/apiRoute";
 import { frontApi } from "../config/frontApi";
 
 export default async function getAccessToken(IDToken: string) {
   const res = await frontApi<{ AccessToken: string }>({
-    url: "/GetAccessToken",
+    url: apiRoute.getAccessToken,
     method: "POST",
     params: { IDToken },
   });
