@@ -12,7 +12,6 @@ const Countdown: React.FC<CountdownProps> = ({ time, onEnd }) => {
   const id = useInterval(() => {
     if (remainingTime > 0) {
       setRemainingTime((prevTime) => prevTime - 1);
-      console.log(remainingTime);
     }
   }, 1000);
 
