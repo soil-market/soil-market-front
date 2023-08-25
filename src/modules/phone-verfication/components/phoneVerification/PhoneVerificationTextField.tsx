@@ -1,6 +1,6 @@
 import { ErrorResponse } from "@/api/firebase/type";
 import TextField from "@/components/design/TextField";
-import { ChangeEvent, memo, useEffect } from "react";
+import { ChangeEvent, memo } from "react";
 
 type PhoneVerificationTextFieldProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -20,15 +20,9 @@ function PhoneVerificationTextField({
     (module) => module.confirmPhoneNumber
   );
 
-  useEffect(() => {
-    if (text.length === 6) {
-      const confirmPhoneNumber = async () => {
-        (await confirm)(text, onSuccess, onError);
-      };
-
-      confirmPhoneNumber();
-    }
-  }, [confirm, onError, onSuccess, text]);
+  const confirmPhoneNumber = async () => {
+    (await confirm)(text, onSuccess, onError);
+  };
 
   return (
     <TextField
@@ -37,6 +31,11 @@ function PhoneVerificationTextField({
       value={text}
       onChange={onChange}
       style={{ width: "100%" }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          confirmPhoneNumber();
+        }
+      }}
     />
   );
 }

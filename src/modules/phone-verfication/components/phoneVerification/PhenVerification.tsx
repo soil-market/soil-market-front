@@ -1,6 +1,5 @@
 import { ErrorResponse } from "@/api/firebase/type";
 import { frontApi } from "@/api/front/config/frontApi";
-import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
 import PageLayout from "@/components/layout/PageLayout";
 import { Typography } from "@mui/material";
@@ -21,7 +20,9 @@ export default function PhenVerification() {
   const { push } = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    if (text.length < 6) {
+      setText(e.target.value);
+    }
   };
 
   const signUp = async (idToken: string) => {
@@ -91,7 +92,7 @@ export default function PhenVerification() {
             onError={onError}
             onSuccess={onSuccess}
           />
-          <Countdown time={180} />
+          {/* <Countdown time={180} /> */}
         </div>
 
         <div>
