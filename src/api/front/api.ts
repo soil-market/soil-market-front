@@ -20,9 +20,6 @@ export async function api<ApiResponse>({
         url,
         method,
         data: params,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
       });
     }
     return response;
