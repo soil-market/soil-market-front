@@ -25,14 +25,11 @@ export default function PhenVerification() {
   };
 
   const signUp = async (idToken: string) => {
-    const formData = new FormData();
-    formData.append("IDToken", idToken);
-
     try {
       const res = await frontApi<{ AccessToken: string }>({
         url: "/GetAccessToken",
         method: "POST",
-        params: formData,
+        params: { IDToken: idToken },
       });
       if (res) {
         localStorage.setItem("access_token", res.AccessToken);
