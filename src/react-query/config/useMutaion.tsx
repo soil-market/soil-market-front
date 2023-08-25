@@ -16,8 +16,8 @@ export default function useMutaion<
   TContext = unknown
 >(
   mutationKey: MutationKey,
-  mutationFn?: MutationFunction<TData, TVariables>,
-  options?: Omit<
+  mutationFn: MutationFunction<TData, TVariables>,
+  options: Omit<
     UseMutationOptions<TData, TError, TVariables, TContext>,
     "mutationKey" | "mutationFn"
   >
