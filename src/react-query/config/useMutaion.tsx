@@ -10,7 +10,7 @@ export { useMutation as baseUseMutaion } from "@tanstack/react-query";
 export default function useMutaion(
   queryKey: MutationKey,
   queryFn: MutationFunction<unknown, void> | undefined,
-  options:
+  options?:
     | Omit<
         UseMutationOptions<unknown, unknown, void, unknown>,
         "mutationKey" | "mutationFn"
