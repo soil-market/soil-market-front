@@ -1,7 +1,7 @@
 import Button from "@/components/design/Button";
 import { Typography } from "@mui/material";
 
-export default function CompanyInfoSelect() {
+export default function SiteSelect() {
   return (
     <div className="px-20 flex flex-col pt-[20vh] gap-60 h-full">
       <Typography variant="h6">현장의 현재 상태를 선택해주세요.</Typography>
