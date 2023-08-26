@@ -3,7 +3,7 @@ import TextField from "@/components/design/TextField";
 import useLoadingRecoil from "@/recoil/useLoading.recoil";
 import { ChangeEvent } from "react";
 
-type PhoneVerificationTextFieldProps = {
+type PhoneConfirmTextFieldProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   text: string;
   error: ErrorResponse | null;
@@ -11,14 +11,14 @@ type PhoneVerificationTextFieldProps = {
   onSuccess: (result: { _tokenResponse: { idToken: any } }) => void;
   timeEnd: boolean;
 };
-function PhoneVerificationTextField({
+function PhoneConfirmTextField({
   onChange,
   text,
   error,
   onSuccess,
   onError,
   timeEnd,
-}: PhoneVerificationTextFieldProps) {
+}: PhoneConfirmTextFieldProps) {
   const { setLoading } = useLoadingRecoil();
 
   const confirm = import("@/api/firebase/firebase").then(
@@ -60,4 +60,4 @@ function PhoneVerificationTextField({
   );
 }
 
-export default PhoneVerificationTextField;
+export default PhoneConfirmTextField;

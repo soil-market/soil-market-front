@@ -7,7 +7,7 @@ import { Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import usePhoneVerificationRecoil from "../usePhoneVerfication.recoil";
 
-export default function PhoneTextField() {
+export default function PhoneVerification() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);

@@ -1,7 +1,7 @@
 import Process from "@/components/shared/process/Process";
 import useIsMounted from "@/hooks/useIsMounted";
-import PhoneTextField from "@/modules/phone-verfication/components/PhoneTextField";
-import PhenVerification from "@/modules/phone-verfication/components/phoneVerification/PhenVerification";
+import PhoneVerification from "@/modules/phone-verfication/components/PhoneVerification";
+import PhoneConfirm from "@/modules/phone-verfication/components/phoneConfirm/PhoneConfirm";
 
 export default function PhoneVerficationPage() {
   const { isMounted } = useIsMounted();
@@ -9,8 +9,8 @@ export default function PhoneVerficationPage() {
   return (
     <>
       <Process className="h-full" processName="phone-verification">
-        {isMounted && <PhoneTextField />}
-        {isMounted && <PhenVerification />}
+        {isMounted && <PhoneVerification />}
+        {isMounted && <PhoneConfirm />}
       </Process>
       <div id={"recaptcha-container"}></div>
     </>

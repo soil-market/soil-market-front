@@ -7,9 +7,9 @@ import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import usePhoneVerificationRecoil from "../../usePhoneVerfication.recoil";
-import PhoneVerificationTextField from "./PhoneVerificationTextField";
+import PhoneConfirmTextField from "./PhoneConfirmTextField";
 
-export default function PhenVerification() {
+export default function PhoneConfirm() {
   const [text, setText] = useState("");
 
   const [error, setError] = useState<ErrorResponse | null>(null);
@@ -80,7 +80,7 @@ export default function PhenVerification() {
       </div>
       <div className="flex flex-col gap-12">
         <div className="w-full flex gap-12 items-center">
-          <PhoneVerificationTextField
+          <PhoneConfirmTextField
             timeEnd={timeEnd}
             onChange={onChange}
             text={text}
