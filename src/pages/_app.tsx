@@ -1,3 +1,4 @@
+import LoadingContainer from "@/components/container/LoadingContainer";
 import Layout from "@/components/layout/Layout";
 import useIosVh from "@/hooks/useIosVh";
 import "@/styles/globals.css";
@@ -15,8 +16,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <Layout>
-          <Component {...pageProps} />
-          <div id={"recaptcha-container"}></div>
+          <LoadingContainer>
+            <Component {...pageProps} />
+            <div id={"recaptcha-container"}></div>
+          </LoadingContainer>
         </Layout>
       </RecoilRoot>
     </QueryClientProvider>
