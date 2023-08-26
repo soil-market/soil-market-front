@@ -14,9 +14,9 @@ export default function MarketForm() {
   );
 
   return (
-    <>
+    <div className="pb-40 pt-80 px-20">
       <Header text={header} />
-      <form className="h-full px-20 pt-80 gap-80 flex flex-col">
+      <form className="h-full gap-80 flex flex-col">
         <div className="flex flex-col gap-20">
           <div>
             <Typography variant="subtitle1">현장 위치를 알려주세요.</Typography>
@@ -50,6 +50,6 @@ export default function MarketForm() {
           <TextField label="기타사항" minRows={2} />
         </div>
       </form>
-    </>
+    </div>
   );
 }

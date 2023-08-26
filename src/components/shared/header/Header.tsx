@@ -19,7 +19,7 @@ export default function Header({ text, beforePage }: HeaderProps) {
   };
 
   return (
-    <div className="fixed top-0 left-0 h-60 flex justify-start gap-12 items-center w-full">
+    <div className="fixed top-0 left-0 h-60 flex justify-start gap-12 items-center w-full bg-white">
       <ArrowBackIcon
         className="absolute top-[17px] left-[15px]"
         onClick={goBack}

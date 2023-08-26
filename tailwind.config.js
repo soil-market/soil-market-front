@@ -17,6 +17,7 @@ module.exports = {
       borderRadius: px0_100,
       colors: {
         gray: "#9E9E9E",
+        white: "#ffffff",
       },
     },
   },
