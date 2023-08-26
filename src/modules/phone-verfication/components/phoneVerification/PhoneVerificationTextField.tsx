@@ -1,7 +1,7 @@
 import { ErrorResponse } from "@/api/firebase/type";
 import TextField from "@/components/design/TextField";
 import useLoadingRecoil from "@/recoil/useLoading.recoil";
-import { ChangeEvent, memo } from "react";
+import { ChangeEvent } from "react";
 
 type PhoneVerificationTextFieldProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -9,6 +9,7 @@ type PhoneVerificationTextFieldProps = {
   error: ErrorResponse | null;
   onError: (error: ErrorResponse | null) => void;
   onSuccess: (result: { _tokenResponse: { idToken: any } }) => void;
+  timeEnd: boolean;
 };
 function PhoneVerificationTextField({
   onChange,
@@ -16,6 +17,7 @@ function PhoneVerificationTextField({
   error,
   onSuccess,
   onError,
+  timeEnd,
 }: PhoneVerificationTextFieldProps) {
   const { setLoading } = useLoadingRecoil();
 
@@ -24,6 +26,10 @@ function PhoneVerificationTextField({
   );
 
   const confirmPhoneNumber = async () => {
+    if (timeEnd) {
+      alert("인증시간이 만료되었어요.");
+      return;
+    }
     setLoading(true);
     (await confirm)(
       text,
@@ -54,4 +60,4 @@ function PhoneVerificationTextField({
   );
 }
 
-export default memo(PhoneVerificationTextField);
+export default PhoneVerificationTextField;

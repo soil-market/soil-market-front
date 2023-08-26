@@ -5,7 +5,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import useGetAccessToken from "@/react-query/public/useGetAccessToken";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import usePhoneVerificationRecoil from "../../usePhoneVerfication.recoil";
 import PhoneVerificationTextField from "./PhoneVerificationTextField";
 
@@ -15,6 +15,8 @@ export default function PhenVerification() {
   const [error, setError] = useState<ErrorResponse | null>(null);
 
   const [idToken, setIdToken] = useState("");
+
+  const [timeEnd, setTimeEnd] = useState(false);
 
   const { phoneVerification } = usePhoneVerificationRecoil();
 
@@ -59,14 +61,11 @@ export default function PhenVerification() {
     );
   };
 
-  const onSuccess = useCallback(
-    async (result: { _tokenResponse: { idToken: any } }) => {
-      const idToken = result._tokenResponse.idToken;
-      setIdToken(idToken);
-      alert("인증되었어요!");
-    },
-    []
-  );
+  const onSuccess = async (result: { _tokenResponse: { idToken: any } }) => {
+    const idToken = result._tokenResponse.idToken;
+    setIdToken(idToken);
+    alert("인증되었어요!");
+  };
 
   const onError = (error: ErrorResponse | null) => {
     setError(error);
@@ -82,17 +81,18 @@ export default function PhenVerification() {
       <div className="flex flex-col gap-12">
         <div className="w-full flex gap-12 items-center">
           <PhoneVerificationTextField
+            timeEnd={timeEnd}
             onChange={onChange}
             text={text}
             error={error}
             onError={onError}
             onSuccess={onSuccess}
           />
-          <Countdown time={180} />
+          <Countdown time={180} onEnd={() => setTimeEnd(true)} />
         </div>
 
         <div>
-          <Button onClick={onClick} style={{}} size="small">
+          <Button onClick={onClick} size="small">
             인증번호 다시 받기
           </Button>
         </div>
