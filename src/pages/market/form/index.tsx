@@ -1,9 +1,9 @@
-import SiteSelect from "@/modules/market-form/SiteSelect";
+import MarketSelect from "@/modules/market-form/MarketSelect";
 
 export default function MarketFormPage() {
   return (
     <div className="h-full">
-      <SiteSelect />
+      <MarketSelect />
     </div>
   );
 }
