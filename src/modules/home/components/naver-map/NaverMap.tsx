@@ -30,7 +30,7 @@ export default function NaverMap() {
   }, [numX, numY]);
 
   return (
-    <div className="h-screen w-screen pt-[165px] pb-67">
+    <div className="h-full w-screen pt-[165px]">
       <div id="map" style={{ width: "100vw", height: "100%" }}></div>
     </div>
   );

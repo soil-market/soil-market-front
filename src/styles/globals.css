@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#__next {
-  height: 100%;
-}
-
 h5,
 h6,
 p {

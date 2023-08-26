@@ -16,35 +16,39 @@ export default function MarketForm() {
   return (
     <>
       <Header text={header} />
-      <form className="h-full flex flex-col px-20 pt-80 justify-around">
-        <div>
-          <Typography variant="subtitle1">현장 위치를 알려주세요.</Typography>
-          <Typography variant="subtitle2">추후에 수정도 가능해요.</Typography>
-          <FindTextField />
-        </div>
-
-        <div className="flex justify-between">
+      <form className="h-full px-20 pt-80 gap-80 flex flex-col">
+        <div className="flex flex-col gap-20">
           <div>
-            <Typography variant="body1">시작일시</Typography>
-            <TextField type="date-local" />
+            <Typography variant="subtitle1">현장 위치를 알려주세요.</Typography>
+            <Typography variant="subtitle2">추후에 수정도 가능해요.</Typography>
+            <FindTextField />
           </div>
+
+          <div className="flex justify-between">
+            <div>
+              <Typography variant="body1">시작일시</Typography>
+              <TextField type="date-local" />
+            </div>
+            <div>
+              <Typography variant="body1">종료일시</Typography>
+              <TextField type="date-local" />
+              <CheckBox>협의</CheckBox>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-20">
           <div>
-            <Typography variant="body1">종료일시</Typography>
-            <TextField type="date-local" />
-            <CheckBox>협의</CheckBox>
+            <Typography variant="subtitle1">
+              토사에 대한 정보도 알려주세요
+            </Typography>
           </div>
-        </div>
 
-        <div>
-          <Typography variant="subtitle1">
-            토사에 대한 정보도 알려주세요
-          </Typography>
+          <TextField label="토사종류" />
+          <TextField label="토사량 ()" />
+          <TextField label="반출입 조건" minRows={4} />
+          <TextField label="기타사항" minRows={2} />
         </div>
-
-        <TextField label="토사종류" />
-        <TextField label="토사량 ()" />
-        <TextField label="반출입 조건" minRows={4} />
-        <TextField label="기타사항" minRows={2} />
       </form>
     </>
   );
