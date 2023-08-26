@@ -7,7 +7,7 @@ import useMutaion from "../config/useMutaion";
 export default function useGetAccessToken(
   options: Omit<
     UseMutationOptions<
-      { AccessToken: string } | undefined,
+      { AccessToken: string },
       AxiosError<unknown, any>,
       string,
       unknown

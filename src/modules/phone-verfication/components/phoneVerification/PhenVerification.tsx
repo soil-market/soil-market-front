@@ -1,8 +1,8 @@
 import { ErrorResponse } from "@/api/firebase/type";
-import { frontApi } from "@/api/front/config/frontApi";
 import Countdown from "@/components/CountDown";
 import Button from "@/components/design/Button";
 import PageLayout from "@/components/layout/PageLayout";
+import useGetAccessToken from "@/react-query/public/useGetAccessToken";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { ChangeEvent, useCallback, useState } from "react";
@@ -18,6 +18,13 @@ export default function PhenVerification() {
 
   const { phoneVerification } = usePhoneVerificationRecoil();
 
+  const { mutate } = useGetAccessToken({
+    onSuccess: (res) => {
+      localStorage.setItem("access_token", res.AccessToken);
+      push("sign-up");
+    },
+  });
+
   const { push } = useRouter();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,19 +34,7 @@ export default function PhenVerification() {
   };
 
   const signUp = async (idToken: string) => {
-    try {
-      const res = await frontApi<{ AccessToken: string }>({
-        url: "/GetAccessToken",
-        method: "POST",
-        params: { IDToken: idToken },
-      });
-      if (res) {
-        localStorage.setItem("access_token", res.AccessToken);
-        push("sign-up");
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    mutate(idToken);
   };
 
   let verifyPhoneNumber: (

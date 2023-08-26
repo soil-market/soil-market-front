@@ -12,7 +12,10 @@ const frontApiConfig = axios.create({
 export async function frontApi<ApiResponse>(
   params: Omit<APIParams, "axiosInstance">
 ) {
-  return await api<ApiResponse>({ ...params, axiosInstance: frontApiConfig });
+  return (await api<ApiResponse>({
+    ...params,
+    axiosInstance: frontApiConfig,
+  })) as ApiResponse;
 }
 
 frontApiConfig.interceptors.response.use((res) => {
