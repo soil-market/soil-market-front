@@ -14,7 +14,7 @@ export default function PhenVerification() {
 
   const [error, setError] = useState<ErrorResponse | null>(null);
 
-  const [idToken, setIdToken] = useState("");
+  const [idToken, setIdToken] = useState(0);
 
   const { phoneVerification } = usePhoneVerificationRecoil();
 
