@@ -16,8 +16,9 @@ module.exports = {
       gap: px0_100,
       borderRadius: px0_100,
       colors: {
-        gray: "#9E9E9E",
+        gray: "#D3D3D3",
         white: "#ffffff",
+        "light-gray": "#F0F0F0",
       },
     },
   },
