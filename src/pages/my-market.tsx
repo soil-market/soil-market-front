@@ -1,7 +1,7 @@
 import Button from "@/components/design/Button";
 import Export from "@/modules/my-market/export/Export";
 import Import from "@/modules/my-market/import/Import";
-import { Typography } from "@mui/material";
+import { Fab, Typography } from "@mui/material";
 import Link from "next/link";
 
 export default function MyMarket() {
@@ -32,10 +32,12 @@ export default function MyMarket() {
         </div>
       </div>
 
-      <div className="absolute bottom-[77px] right-[8px]">
-        <Button>
-          <Link href={"/feedback"}>앱에 의견남기기</Link>
-        </Button>
+      <div className="absolute bottom-[10px] right-[8px]">
+        <Fab variant="extended">
+          <Link href={"/feedback"} className="whitespace-nowrap">
+            앱에 의견남기기
+          </Link>
+        </Fab>
       </div>
     </div>
   );
