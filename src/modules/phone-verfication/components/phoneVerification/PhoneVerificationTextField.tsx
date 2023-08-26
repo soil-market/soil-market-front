@@ -1,5 +1,6 @@
 import { ErrorResponse } from "@/api/firebase/type";
 import TextField from "@/components/design/TextField";
+import useLoadingRecoil from "@/recoil/useLoading.recoil";
 import { ChangeEvent, memo } from "react";
 
 type PhoneVerificationTextFieldProps = {
@@ -16,12 +17,25 @@ function PhoneVerificationTextField({
   onSuccess,
   onError,
 }: PhoneVerificationTextFieldProps) {
+  const { setLoading } = useLoadingRecoil();
+
   const confirm = import("@/api/firebase/firebase").then(
     (module) => module.confirmPhoneNumber
   );
 
   const confirmPhoneNumber = async () => {
-    (await confirm)(text, onSuccess, onError);
+    setLoading(true);
+    (await confirm)(
+      text,
+      (result) => {
+        setLoading(false);
+        onSuccess(result);
+      },
+      (error) => {
+        setLoading(false);
+        onError(error);
+      }
+    );
   };
 
   return (
