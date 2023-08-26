@@ -1,15 +1,27 @@
+import TextField from "@/components/design/TextField";
+import Header from "@/components/shared/header/Header";
 import { CheckBox } from "@mui/icons-material";
-import { TextField, Typography } from "@mui/material";
-import { Form } from "react-hook-form";
+import { Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import FindTextField from "../find/components/FindTextField";
 
 export default function MarketForm() {
+  const { pathname } = useRouter();
+
+  const [header, setHeader] = useState(
+    pathname === "/market/form/import" ? "토사 받아요" : "토사 나와요"
+  );
+
   return (
-    <Form>
-      <FindTextField />
-      <div>
-        <Typography variant="subtitle1">현장 위치를 알려주세요.</Typography>
-        <Typography variant="subtitle2">추후에 수정도 가능해요.</Typography>
+    <>
+      <Header text={header} />
+      <form className="h-full flex flex-col px-20 pt-80 justify-around">
+        <div>
+          <Typography variant="subtitle1">현장 위치를 알려주세요.</Typography>
+          <Typography variant="subtitle2">추후에 수정도 가능해요.</Typography>
+          <FindTextField />
+        </div>
 
         <div className="flex justify-between">
           <div>
@@ -33,7 +45,7 @@ export default function MarketForm() {
         <TextField label="토사량 ()" />
         <TextField label="반출입 조건" minRows={4} />
         <TextField label="기타사항" minRows={2} />
-      </div>
-    </Form>
+      </form>
+    </>
   );
 }
