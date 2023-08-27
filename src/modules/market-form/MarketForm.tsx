@@ -2,6 +2,7 @@ import Button from "@/components/design/Button";
 import TextArea from "@/components/design/TextArea";
 import TextField from "@/components/design/TextField";
 import Header from "@/components/shared/header/Header";
+import ImageUpload from "@/components/shared/image-upload/ImageUpload";
 import { CheckBox } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import FindTextField from "../find/components/FindTextField";
@@ -49,6 +50,7 @@ export default function MarketForm({ type }: MarketFormProps) {
             <Typography variant="subtitle1">
               토사에 대한 정보도 알려주세요
             </Typography>
+            <ImageUpload />
           </div>
 
           <TextField label="토사종류" />
