@@ -23,8 +23,9 @@ export default function useMutaion<
   >
 ): UseMutationResult<TData, TError, TVariables, TContext> {
   return useMutation(mutationKey, mutationFn, {
-    onError: () => {
+    onError: (error) => {
       // 기본 에러 처리
+      console.log(error);
     },
     ...options,
   });
